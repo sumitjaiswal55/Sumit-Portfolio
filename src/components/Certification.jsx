@@ -32,13 +32,13 @@ const Certification = () => {
       id: 1,
       title: "FullStack Web Development",
       issuer: "Apna College",
-      imageUrl: "https://media.licdn.com/dms/image/v2/D5622AQGIXu-50mXh9Q/feedshare-shrink_800/feedshare-shrink_800/0/1719149302372?e=1760572800&v=beta&t=c0FQ_WtZQ2a1i4s8JLWd9IjpkFR85FS-5DDaEsk8nXQ",
+      imageUrl: "https://res.cloudinary.com/dtnkygknq/image/upload/v1764318198/sumit-dev_o2f5hn.jpg",
     },
     {
       id: 2,
       title: "Data Structures Algorithm",
       issuer: "Apna College",
-      imageUrl: "https://media.licdn.com/dms/image/v2/D562DAQEQW3rmiz3bVw/profile-treasury-document-cover-images_800/profile-treasury-document-cover-images_800/0/1729781657670?e=1758434400&v=beta&t=tjo_az9fU3iZ3631u-rU-jotvZinkSuZ00AUSZ0LEDg",
+      imageUrl: "https://res.cloudinary.com/dtnkygknq/image/upload/v1764318367/sumit-dsa_tfkrcc.jpg",
     },
     {
       id: 3,
