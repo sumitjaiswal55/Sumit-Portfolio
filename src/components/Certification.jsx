@@ -71,31 +71,33 @@ const Certification = () => {
           </h2>
           
           {/* --- Certificate Slider --- */}
-          <div className="relative w-full max-w-4xl px-4"> {/* Added px-4 for mobile spacing */}
-            
+          <div className="relative w-full max-w-4xl px-4">
             {/* Left Arrow */}
             <button 
               onClick={handlePrev} 
-              className="absolute top-1/2 left-0 md:-left-8 -translate-y-1/2 z-10 p-2 bg-white rounded-full shadow-md hover:bg-gray-200 transition-all duration-300"
+              className="absolute top-1/2 left-0 -translate-y-1/2 z-10 p-2 bg-white/80 rounded-full shadow-md hover:bg-gray-200 transition-all duration-300"
               aria-label="Previous Certificate"
             >
               <ArrowLeft />
             </button>
             
             {/* Certificate Content */}
-            <div className="overflow-hidden rounded-lg shadow-xl bg-gray-50"> {/* Added bg-gray-50 */}
+            <div className="overflow-hidden rounded-lg shadow-xl bg-gray-50">
               <div 
                 className="flex transition-transform ease-out duration-500" 
                 style={{ transform: `translateX(-${currentIndex * 100}%)` }}
               >
                 {/* Certificates Section*/}
                 {certificates.map((cert) => (
-                  <div key={cert.id} className="min-w-full flex-shrink-0">
-                    <div className="w-full h-64 md:h-96 flex items-center justify-center bg-gray-100"> {/* Container for specific height */}
+                  <div key={cert.id} className="min-w-full flex-shrink-0 flex flex-col">
+                    {/* Image Container with Fixed Height */}
+                    {/* Maine yahan se flex items-center hata diya kyunki fill use kar rahe hain */}
+                    <div className="w-full h-64 md:h-[500px] bg-black/5">
                         <img 
-                        src={cert.imageUrl} 
-                        alt={cert.title} 
-                        className="w-full h-full object-contain" 
+                          src={cert.imageUrl} 
+                          alt={cert.title} 
+                          // CHANGE IS HERE: object-contain ki jagah object-fill
+                          className="w-full h-full object-fill" 
                         />
                     </div>
                     <div className="bg-white p-4 border-t">
@@ -110,7 +112,7 @@ const Certification = () => {
             {/* Right Arrow */}
             <button 
               onClick={handleNext} 
-              className="absolute top-1/2 right-0 md:-right-8 -translate-y-1/2 z-10 p-2 bg-white rounded-full shadow-md hover:bg-gray-200 transition-all duration-300"
+              className="absolute top-1/2 right-0 -translate-y-1/2 z-10 p-2 bg-white/80 rounded-full shadow-md hover:bg-gray-200 transition-all duration-300"
               aria-label="Next Certificate"
             >
               <ArrowRight />
