@@ -28,18 +28,15 @@ const Skills = () => {
   const customCss = `
     @keyframes scroll {
       0% { transform: translateX(0); }
-      /* Ab hum -100% ka istemal karenge */
       100% { transform: translateX(-100%); }
     }
     
     .scroller {
-      /* Ab scroller container flex hoga */
       display: flex;
     }
 
     .scroller-inner {
       display: flex;
-      /* Animation dono inner lists par kaam karega */
       animation: scroll 15s linear infinite;
     }
 
@@ -52,20 +49,16 @@ const Skills = () => {
     <>
       <style>{customCss}</style>
 
-      <section className="w-full py-20">
-        <div className="container mx-auto flex flex-col items-center text-center">
-          
-          <h2 className="mb-4 text-4xl font-bold text-gray-800">My Skills</h2>
-          
-          <p className="mb-12 max-w-2xl text-gray-600">
+      <section className="w-full py-20 flex  justify-center bg-[#0c0d11] min-h-screen gap-3 ">
+        <div className="container mx-auto flex flex-col items-center text-center   text-white">
+          <h2 className="mb-4 text-4xl font-bold">My Skills</h2>
+          <p className="mb-12 max-w-2xl">
             We put your ideas and thus your wishes in the form of a unique web project that inspires you and your customers.
           </p>
-
           <div 
             className="w-full max-w-6xl mx-auto overflow-hidden"
             style={{ maskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent)' }}
           >
-            {/* YEH HAI MAIN CHANGE: Ab ek outer 'scroller' div hai */}
             <div className="scroller">
               
               {/* List #1 */}
@@ -79,16 +72,6 @@ const Skills = () => {
                 ))}
               </div>
 
-              {/* List #2 (Duplicate for seamless loop) */}
-              <div className="scroller-inner" aria-hidden="true">
-                {skillsData.map((skill, index) => (
-                  <div key={`b-${index}`} className="flex-shrink-0 flex flex-col items-center justify-center gap-4 rounded-2xl bg-white p-6 shadow-lg mx-4" style={{ width: '180px' }}>
-                    <div className="h-24 w-24 flex items-center justify-center">{skill.icon}</div>
-                    <p className="text-xl font-bold text-gray-800">{skill.percentage}</p>
-                    <p className="font-semibold text-purple-600">{skill.name}</p>
-                  </div>
-                ))}
-              </div>
 
             </div>
           </div>

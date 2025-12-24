@@ -11,12 +11,8 @@ const About = () => {
     return (
 
         // Main section with your specified gradient background
-        <motion.section 
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true, amount: 0.7 }} 
-        className="relative flex min-h-screen flex-col-reverse items-center justify-between overflow-hidden px-10 py-20 md:flex-row">
+        <motion.section
+        className="relative flex min-h-screen flex-col-reverse items-center justify-between overflow-hidden px-10 py-20 md:flex-row w-full py-20 flex bg-[#0c0d11] min-h-screen ">
 
 
             <div className="mb-8 mt-8 flex justify-center md:w-1/3 md:mb-0">
@@ -27,16 +23,16 @@ const About = () => {
                 />
             </div>
 
-            <div className="container mx-auto text-center md:w-1/2 md:text-left">
+            <div className="container mx-auto text-center md:w-1/2 text-white md:text-left">
                 <div className="flex flex-col items-center gap-y-6 md:items-start">
 
-                    <p className="text-lg font-semibold text-gray-600">HI! —</p>
+                    <p className="text-lg font-semibold">HI! —</p>
 
                     <h1 className="text-4xl md:text-5xl font-bold text-purple-700 mt-6 mb-2">
                         About Me
                     </h1>
 
-                    <p className="max-w-xl text-base leading-relaxed text-gray-500">
+                    <p className="max-w-xl text-base leading-relaxed">
                         I started my journey in tech with curiosity for how websites and apps are built. Over time, I explored both frontend and backend technologies, and kept learning by building different kinds of projects.
 
                         Currently, I focus on the MERN stack (MongoDB, Express, React, Node.js) for web development, and I am also exploring mobile app development to expand my skill set.
@@ -46,28 +42,28 @@ const About = () => {
 
                     <div className="grid w-full max-w-xl grid-cols-2 gap-x-8 gap-y-4 pt-4 text-left sm:grid-cols-3">
                         <div>
-                            <strong className="block text-gray-700">Name:</strong>
-                            <span className="text-gray-600">Sumit Jaiswal</span>
+                            <strong className="block">Name:</strong>
+                            <span className="">Sumit Jaiswal</span>
                         </div>
                         <div>
-                            <strong className="block text-gray-700">Email:</strong>
-                            <span className="text-gray-600 text-xs">sumitjaiswal7055@gmail.com</span>
+                            <strong className="block">Email:</strong>
+                            <span className="text-xs">sumitjaiswal7055@gmail.com</span>
                         </div>
                         <div>
-                            <strong className="block text-gray-700">Age:</strong>
-                            <span className="text-gray-600">20 Years</span>
+                            <strong className="block">Age:</strong>
+                            <span className="">20 Years</span>
                         </div>
                         <div>
-                            <strong className="block text-gray-700">Phone:</strong>
-                            <span className="text-gray-600">+91 7084525212</span>
+                            <strong className="block">Phone:</strong>
+                            <span className="">+91 7084525212</span>
                         </div>
                         <div>
-                            <strong className="block text-gray-700">Role:</strong>
-                            <span className="text-gray-600">Student</span>
+                            <strong className="block">Role:</strong>
+                            <span className="">Student</span>
                         </div>
                         <div>
-                            <strong className="block text-gray-700">From:</strong>
-                            <span className="text-gray-600">India</span>
+                            <strong className="block">From:</strong>
+                            <span className="">India</span>
                         </div>
                     </div>
 

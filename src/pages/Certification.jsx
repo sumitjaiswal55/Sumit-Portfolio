@@ -64,9 +64,9 @@ const Certification = () => {
 
   return (
     <div>
-      <section className="w-full py-20">
+      <section className="w-full py-20 flex bg-[#0c0d11] min-h-screen gap-3">
         <div className="container mx-auto flex flex-col items-center text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-purple-700 mt-6 mb-2">
+          <h2 className="text-4xl font-bold text-white mb-2">
             My Certifications
           </h2>
           
@@ -90,13 +90,10 @@ const Certification = () => {
                 {/* Certificates Section*/}
                 {certificates.map((cert) => (
                   <div key={cert.id} className="min-w-full flex-shrink-0 flex flex-col">
-                    {/* Image Container with Fixed Height */}
-                    {/* Maine yahan se flex items-center hata diya kyunki fill use kar rahe hain */}
                     <div className="w-full h-64 md:h-[500px] bg-black/5">
                         <img 
                           src={cert.imageUrl} 
                           alt={cert.title} 
-                          // CHANGE IS HERE: object-contain ki jagah object-fill
                           className="w-full h-full object-fill" 
                         />
                     </div>

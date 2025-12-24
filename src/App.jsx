@@ -1,31 +1,38 @@
-import React from 'react'
-import Hero from './components/Hero'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from './components/Navbar'
-import About from './components/About'
-import Skills from './components/Skills'
-import Projects from './components/Projects'
-import Education from './components/Education'
-import Contact from './components/Contact'
-import Loader from './components/Loader'
-import Certification from './components/Certification'
 import Footer from "./components/Footer"
+import Home from "./pages/Home";
+import Projects from "./pages/Projects";
+import Gallery from "./pages/Gallery"
+import Skills from "./pages/Skills"
+import Certificates from "./pages/Certification"
+import Blog from "./pages/Blog"
+import Resume from "./pages/Resume"
+import About from "./pages/About"
+import Contact from "./pages/Contact"
 
 function App() {
   return (
     
-   <div className=" font-poppins w-full bg-gradient-to-br from-teal-50 via-purple-100 via-pink-50  to-blue-100">
-        <Loader />
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Certification />
-        <Education />
-        <Contact />
-        <Footer />
-      </main>
+   <div className="font-poppins">
+    <BrowserRouter>
+      <Navbar /> 
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/skills" element={<Skills />} />
+        <Route path="/certificates" element={<Certificates />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/resume" element={<Resume />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        
+
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+      
     </div>
   )
 }
