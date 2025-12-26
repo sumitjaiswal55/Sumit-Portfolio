@@ -16,7 +16,7 @@ const Navbar = () => {
   return (
     <div className="navbar flex bg-black h-16 items-center justify-between text-md font-medium text-white py-4 px-8">
       <div className="flex items-center gap-3 cursor-pointer">
-        <h1 className="text-[30px] text-blue-500">SJ</h1>
+        <h1 className="text-[30px] text-cyan-400">SJ</h1>
         <div>
         <p>Sumit Jaiswal</p>
         <p className="text-gray-300 text-[10px]">Full Stack Developer</p>
@@ -29,10 +29,9 @@ const Navbar = () => {
             key={link.name}
             to={link.path}
             className={({ isActive }) =>
-              `hover:underline hover:text-blue-500 decoration-blue-500 decoration-2 underline-offset-8 transition-colors duration-200
-              ${isActive ? "text-blue-500 underline" : "text-white"}`
-            }
-          >
+              `hover:underline hover:text-cyan-400 decoration-cyan-400 decoration-2 underline-offset-8 transition-colors duration-200
+              ${isActive ? "text-cyan-400 underline" : "text-white"}`
+            }>
             {link.name}
           </NavLink>
         ))}

@@ -1,1 +1,15 @@
 @import "tailwindcss";
+/* Floating Animation Keyframes */
+@keyframes floatUp Down {
+  0%, 100% {
+    transform: translateY(0px); /* Apni jagah par */
+  }
+  50% {
+    transform: translateY(-20px); /* Thoda upar jayega */
+  }
+}
+
+/* Class jo humne React mein use ki hai */
+.floating-container {
+  animation: floatUpDown 6s ease-in-out infinite;
+}
