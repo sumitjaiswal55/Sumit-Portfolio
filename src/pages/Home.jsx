@@ -29,7 +29,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="flex text-white relative w-full min-h-screen bg-black bg-[radial-gradient(circle_at_30%_30%,_#1e293b_0%,_#0a0a0a_50%,_#000000_100%)] overflow-hidden flex items-center justify-evenly gap-[2rem]">
+    <div className="flex flex-wrap text-white relative w-full min-h-screen bg-black bg-[radial-gradient(circle_at_30%_30%,_#1e293b_0%,_#0a0a0a_50%,_#000000_100%)] overflow-hidden flex items-center justify-evenly gap-[2rem]">
       <div
         className="relative h-[320px] w-[320px] flex items-center justify-center"
         style={{ animation: "float 6s ease-in-out infinite" }}
