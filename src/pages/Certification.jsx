@@ -1,30 +1,5 @@
-import React, { useState } from "react";
-
-const ArrowLeft = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-6 w-6"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth={2}
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-  </svg>
-);
-
-const ArrowRight = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-6 w-6"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth={2}
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-  </svg>
-);
+import React, { useState, useEffect } from "react";
+import { FaChevronLeft, FaChevronRight, FaAward } from "react-icons/fa";
 
 const Certification = () => {
   const certificates = [
@@ -32,23 +7,34 @@ const Certification = () => {
       id: 1,
       title: "FullStack Web Development",
       issuer: "Apna College",
+      date: "2024",
       imageUrl: "https://res.cloudinary.com/dtnkygknq/image/upload/v1764318198/sumit-dev_o2f5hn.jpg",
     },
     {
       id: 2,
-      title: "Data Structures Algorithm",
+      title: "Data Structures & Algorithms",
       issuer: "Apna College",
+      date: "2024",
       imageUrl: "https://res.cloudinary.com/dtnkygknq/image/upload/v1764318367/sumit-dsa_tfkrcc.jpg",
     },
     {
       id: 3,
-      title: "Project Competition",
+      title: "Project Competition Winner",
       issuer: "GHRCEM (GHRIETN)",
+      date: "2023",
       imageUrl: "https://res.cloudinary.com/dtnkygknq/image/upload/w_800,c_fit/v1757827520/certificate_jg3rh3.jpg",
     },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Auto-Slide Logic (Optional: Hata sakte ho agar nahi chahiye)
+  useEffect(() => {
+    const timer = setInterval(() => {
+      handleNext();
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [currentIndex]);
 
   const handlePrev = () => {
     const isFirstSlide = currentIndex === 0;
@@ -62,63 +48,129 @@ const Certification = () => {
     setCurrentIndex(newIndex);
   };
 
+  const goToSlide = (slideIndex) => {
+    setCurrentIndex(slideIndex);
+  };
+
   return (
-    <div>
-      <section className="w-full py-20 flex bg-[#0c0d11] min-h-screen gap-3">
-        <div className="container mx-auto flex flex-col items-center text-center">
-          <h2 className="text-4xl font-bold text-white mb-2">
-            My Certifications
-          </h2>
+    <section className="w-full min-h-screen bg-[#0c0d11] bg-[radial-gradient(circle_at_50%_0%,_rgba(6,182,212,0.15)_0%,_rgba(0,0,0,1)_100%)] py-20 flex flex-col items-center justify-center overflow-hidden px-4">
+      
+      {/* --- HEADING --- */}
+      <div className="flex flex-col items-center justify-center mb-12 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+          My{" "}
+          <span className="bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(6,182,212,0.5)]">
+            Certifications
+          </span>
+        </h2>
+        <div className="h-1 w-24 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full mb-6"></div>
+        <p className="text-gray-400 max-w-lg">
+          Validating my skills and dedication through recognized achievements.
+        </p>
+      </div>
+      
+      {/* --- SLIDER CONTAINER --- */}
+      <div className="relative w-full max-w-5xl group">
+        
+        {/* Main Card Frame with Glow */}
+        <div className="relative overflow-hidden rounded-2xl bg-[#121212] border border-white/10 shadow-[0_0_40px_rgba(6,182,212,0.1)] backdrop-blur-sm">
           
-          {/* --- Certificate Slider --- */}
-          <div className="relative w-full max-w-4xl px-4">
-            {/* Left Arrow */}
-            <button 
-              onClick={handlePrev} 
-              className="absolute top-1/2 left-0 -translate-y-1/2 z-10 p-2 bg-white/80 rounded-full shadow-md hover:bg-gray-200 transition-all duration-300"
-              aria-label="Previous Certificate"
-            >
-              <ArrowLeft />
-            </button>
-            
-            {/* Certificate Content */}
-            <div className="overflow-hidden rounded-lg shadow-xl bg-gray-50">
-              <div 
-                className="flex transition-transform ease-out duration-500" 
-                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-              >
-                {/* Certificates Section*/}
-                {certificates.map((cert) => (
-                  <div key={cert.id} className="min-w-full flex-shrink-0 flex flex-col">
-                    <div className="w-full h-64 md:h-[500px] bg-black/5">
-                        <img 
-                          src={cert.imageUrl} 
-                          alt={cert.title} 
-                          className="w-full h-full object-fill" 
-                        />
+          {/* Images Strip */}
+          <div 
+            className="flex transition-transform ease-out duration-700" 
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {certificates.map((cert) => (
+              <div key={cert.id} className="min-w-full flex flex-col md:flex-row h-auto md:h-[500px]">
+                
+                {/* Image Section (Dark Background for contrast) */}
+                <div className="w-full md:w-2/3 h-[300px] md:h-full bg-black/50 flex items-center justify-center p-4 relative">
+                   {/* Background blur image for ambience */}
+                   <img 
+                      src={cert.imageUrl} 
+                      alt="blur-bg" 
+                      className="absolute inset-0 w-full h-full object-cover opacity-20 blur-xl"
+                   />
+                   {/* Main Image */}
+                   <img 
+                    src={cert.imageUrl} 
+                    alt={cert.title} 
+                    className="relative w-full h-full object-contain z-10 shadow-2xl rounded-lg border border-white/5" 
+                  />
+                </div>
+
+                {/* Info Section (Right Side on Desktop, Bottom on Mobile) */}
+                <div className="w-full md:w-1/3 bg-[#181818] p-8 flex flex-col justify-center border-l border-white/5 relative">
+                  
+                  {/* Decorative Icon */}
+                  <div className="absolute top-6 right-6 text-cyan-500/10">
+                    <FaAward size={120} />
+                  </div>
+
+                  <div className="relative z-10">
+                    <div className="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider text-cyan-400 uppercase bg-cyan-900/20 rounded-full border border-cyan-500/20">
+                      Verified
                     </div>
-                    <div className="bg-white p-4 border-t">
-                      <h3 className="text-xl font-semibold text-gray-800">{cert.title}</h3>
-                      <p className="text-md text-gray-600 mt-1">{cert.issuer}</p>
+                    
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 leading-tight">
+                      {cert.title}
+                    </h3>
+                    
+                    <div className="h-1 w-12 bg-blue-600 rounded-full mb-6"></div>
+                    
+                    <div className="space-y-4">
+                      <div>
+                        <p className="text-gray-500 text-sm uppercase tracking-wide">Issued By</p>
+                        <p className="text-gray-300 font-medium text-lg">{cert.issuer}</p>
+                      </div>
+                      <div>
+                        <p className="text-gray-500 text-sm uppercase tracking-wide">Year</p>
+                        <p className="text-gray-300 font-medium">{cert.date || "2024"}</p>
+                      </div>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
 
-            {/* Right Arrow */}
-            <button 
-              onClick={handleNext} 
-              className="absolute top-1/2 right-0 -translate-y-1/2 z-10 p-2 bg-white/80 rounded-full shadow-md hover:bg-gray-200 transition-all duration-300"
-              aria-label="Next Certificate"
-            >
-              <ArrowRight />
-            </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* --- CONTROLS --- */}
+          
+          {/* Left Arrow */}
+          <button 
+            onClick={handlePrev} 
+            className="absolute top-1/2 left-4 -translate-y-1/2 z-20 p-3 rounded-full bg-black/50 border border-white/10 text-white hover:bg-cyan-500 hover:border-cyan-500 hover:text-black transition-all duration-300 backdrop-blur-md opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"
+          >
+            <FaChevronLeft size={20} />
+          </button>
+          
+          {/* Right Arrow */}
+          <button 
+            onClick={handleNext} 
+            className="absolute top-1/2 right-4 -translate-y-1/2 z-20 p-3 rounded-full bg-black/50 border border-white/10 text-white hover:bg-cyan-500 hover:border-cyan-500 hover:text-black transition-all duration-300 backdrop-blur-md opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"
+          >
+            <FaChevronRight size={20} />
+          </button>
+
+          {/* Dots Navigation */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+            {certificates.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  currentIndex === index 
+                    ? "bg-cyan-400 w-8" 
+                    : "bg-gray-600 hover:bg-gray-400"
+                }`}
+              />
+            ))}
           </div>
 
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 

@@ -29,7 +29,6 @@ const Navbar = () => {
     // Main Nav ko 'relative' aur 'z-50' diya taaki Logo aur Button hamesha upar dikhein
     <nav className="relative z-50 bg-black text-white h-16 flex items-center justify-between px-8">
       
-      {/* --- LOGO SECTION --- */}
       <div className="flex items-center gap-3 cursor-pointer z-50">
         <h1 className="text-[30px] text-cyan-400">SJ</h1>
         <div>
@@ -75,11 +74,7 @@ const Navbar = () => {
       </button>
 
       {/* --- FULL SCREEN MOBILE MENU OVERLAY --- */}
-      {/* fixed: Screen pe chipak jayega
-          inset-0: Top, Bottom, Left, Right sab cover karega
-          bg-black/95: Thoda sa transparent black (glass effect ke liye) ya pura black
-          z-40: Logo/Button (z-50) ke theek neeche rahega 
-      */}
+      
       <div
         className={`fixed inset-0 bg-black/95 backdrop-blur-sm z-40 transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
