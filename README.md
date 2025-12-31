@@ -1,4 +1,4 @@
-# 🚀 Professional Developer Portfolio
+# 🚀 My Personal Portfolio
 
 Welcome to my personal portfolio website! This project showcases my journey as a Full Stack Developer, featuring my projects, skills, certifications, and professional experience.
 
