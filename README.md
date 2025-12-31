@@ -7,13 +7,6 @@ Welcome to my personal portfolio website! This project showcases my journey as a
 
 ---
 
-## 📸 Screenshots
-
-![Home Page](./src/assets/home-screenshot.png) 
-*(Note: Upload a screenshot of your Home page in your repo and update this path)*
-
----
-
 ## ✨ Features
 
 - **🎨 Modern UI/UX:** Built with a dark-themed, glassmorphism design using **Tailwind CSS**.
