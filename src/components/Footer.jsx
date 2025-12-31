@@ -42,7 +42,7 @@ const Footer = () => {
             <h3 className="text-white font-semibold mb-4 tracking-wide">Connect With Me</h3>
             <div className="flex gap-4">
               <a 
-                href="https://github.com/yourusername" 
+                href="https://github.com/sumitjaiswal55" 
                 target="_blank" 
                 rel="noreferrer"
                 className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-cyan-500 hover:text-black hover:border-cyan-500 transition-all duration-300"
@@ -50,7 +50,7 @@ const Footer = () => {
                 <FaGithub size={18} />
               </a>
               <a 
-                href="https://linkedin.com/in/yourusername" 
+                href="https://linkedin.com/in/sumitjaiswal55" 
                 target="_blank" 
                 rel="noreferrer"
                 className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300"
@@ -58,15 +58,7 @@ const Footer = () => {
                 <FaLinkedin size={18} />
               </a>
               <a 
-                href="https://twitter.com/yourusername" 
-                target="_blank" 
-                rel="noreferrer"
-                className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-sky-500 hover:text-white hover:border-sky-500 transition-all duration-300"
-              >
-                <FaTwitter size={18} />
-              </a>
-              <a 
-                href="https://instagram.com/yourusername" 
+                href="https://instagram.com/sumit_jaiswal55" 
                 target="_blank" 
                 rel="noreferrer"
                 className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-pink-600 hover:text-white hover:border-pink-600 transition-all duration-300"
