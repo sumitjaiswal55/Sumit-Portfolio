@@ -83,13 +83,6 @@ const Navbar = () => {
               </NavLink>
             ))}
           </ul>
-
-          {/* Hire Me Button (Extra Call to Action) */}
-          <NavLink to="/contact">
-            <button className="px-5 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-bold uppercase tracking-wide shadow-lg shadow-blue-500/20 hover:shadow-cyan-500/40 hover:scale-105 transition-all">
-              Hire Me
-            </button>
-          </NavLink>
         </div>
 
         {/* --- HAMBURGER BUTTON (Mobile) --- */}
