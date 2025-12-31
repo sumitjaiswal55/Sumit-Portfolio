@@ -3,7 +3,6 @@
 Welcome to my personal portfolio website! This project showcases my journey as a Full Stack Developer, featuring my projects, skills, certifications, and professional experience.
 
 **Live Demo:** [https://sumitjaiswal.in](https://sumitjaiswal.in)  
-*(Replace this with your actual Vercel link if domain is not active yet)*
 
 ---
 
