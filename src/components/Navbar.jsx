@@ -3,8 +3,18 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Logic: Jab menu khule, to background scroll band kar do (Professional feel ke liye)
+  // Scroll Detection Logic
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Mobile Menu Scroll Lock
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -16,87 +26,122 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Projects", path: "/projects" },
-    { name: "Gallery", path: "/gallery" },
-    { name: "Skills", path: "/skills" },
+    { name: "Skills", path: "/skills" }, // Gallery/Certificates ko combine ya dropdown mein daal sakte ho agar space kam ho
     { name: "Certificates", path: "/certificates" },
-    { name: "Blog", path: "/blog" },
     { name: "Resume", path: "/resume" },
-    { name: "About Me", path: "/about" },
+    { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
   ];
 
   return (
-    // Main Nav ko 'relative' aur 'z-50' diya taaki Logo aur Button hamesha upar dikhein
-    <nav className="relative z-50 bg-black text-white h-16 flex items-center justify-between px-8">
-      
-      <div className="flex items-center gap-3 cursor-pointer z-50">
-        <h1 className="text-[30px] text-cyan-400">SJ</h1>
-        <div>
-          <p>Sumit Jaiswal</p>
-          <p className="text-gray-300 text-[10px]">Full Stack Developer</p>
+    // NAVBAR CONTAINER
+    // fixed: Screen pe chipak jayega
+    // transition-all: Background color change smooth hoga
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${
+        scrolled
+          ? "bg-[#0c0d11]/80 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.1)] border-b border-white/5 py-3" // Scrolled Style
+          : "bg-transparent py-5" // Top Style
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        
+        {/* --- LOGO SECTION --- */}
+        <div className="flex items-center gap-3 cursor-pointer group">
+          <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500/20 to-blue-600/20 border border-cyan-500/30 group-hover:border-cyan-400 transition-colors">
+            <h1 className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">
+              SJ
+            </h1>
+          </div>
+          <div className="hidden sm:block">
+            <p className="font-bold text-white text-lg leading-tight group-hover:text-cyan-400 transition-colors">
+              Sumit Jaiswal
+            </p>
+            <p className="text-gray-400 text-[10px] tracking-wider uppercase">
+              Full Stack Dev
+            </p>
+          </div>
         </div>
+
+        {/* --- DESKTOP MENU --- */}
+        <div className="hidden lg:flex items-center gap-8">
+          <ul className="flex items-center gap-6">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.name}
+                to={link.path}
+                className={({ isActive }) =>
+                  `relative text-sm font-medium transition-all duration-300 group
+                  ${isActive ? "text-cyan-400" : "text-gray-300 hover:text-white"}`
+                }
+              >
+                {/* Link Name */}
+                {link.name}
+
+                {/* Animated Bottom Line (Magic Line) */}
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-cyan-400 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
+              </NavLink>
+            ))}
+          </ul>
+
+          {/* Hire Me Button (Extra Call to Action) */}
+          <NavLink to="/contact">
+            <button className="px-5 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-bold uppercase tracking-wide shadow-lg shadow-blue-500/20 hover:shadow-cyan-500/40 hover:scale-105 transition-all">
+              Hire Me
+            </button>
+          </NavLink>
+        </div>
+
+        {/* --- HAMBURGER BUTTON (Mobile) --- */}
+        <button
+          className="lg:hidden text-white focus:outline-none p-2"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? (
+            <svg className="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          )}
+        </button>
+
       </div>
 
-      {/* --- DESKTOP MENU (Large Screens) --- */}
-      <div className="hidden lg:flex flex-1 justify-center">
-        <ul className="flex space-x-4 text-md font-medium items-center gap-4">
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.name}
-              to={link.path}
-              className={({ isActive }) =>
-                `hover:underline hover:text-cyan-400 decoration-cyan-400 decoration-2 underline-offset-8 transition-colors duration-200
-                ${isActive ? "text-cyan-400 underline" : "text-white"}`
-              }
-            >
-              {link.name}
-            </NavLink>
-          ))}
-        </ul>
-      </div>
-
-      {/* --- HAMBURGER BUTTON (Visible on Mobile, Z-Index High) --- */}
-      <button
-        className="lg:hidden text-white focus:outline-none z-50"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {isOpen ? (
-          // Close Icon (Bada aur saaf)
-          <svg className="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        ) : (
-          // Menu Icon
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        )}
-      </button>
-
-      {/* --- FULL SCREEN MOBILE MENU OVERLAY --- */}
-      
+      {/* --- MOBILE FULL SCREEN MENU --- */}
       <div
-        className={`fixed inset-0 bg-black/95 backdrop-blur-sm z-40 transform transition-transform duration-300 ease-in-out ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        } lg:hidden flex flex-col items-center justify-center`}
+        className={`fixed inset-0 bg-[#0c0d11]/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center transition-all duration-500 ease-in-out ${
+          isOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"
+        }`}
       >
-        <ul className="flex flex-col items-center space-y-8">
+        {/* Background Glow for Mobile Menu */}
+        <div className="absolute top-[-20%] right-[-20%] w-80 h-80 bg-blue-600/20 rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="absolute bottom-[-20%] left-[-20%] w-80 h-80 bg-cyan-600/20 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <ul className="flex flex-col items-center gap-8 relative z-10">
           {navLinks.map((link) => (
             <NavLink
               key={link.name}
               to={link.path}
               onClick={() => setIsOpen(false)}
               className={({ isActive }) =>
-                `text-2xl font-semibold tracking-wider transition-all duration-300
-                ${isActive ? "text-cyan-400 scale-110" : "text-gray-300 hover:text-white hover:scale-105"}`
+                `text-2xl font-bold tracking-wide transition-all duration-300
+                ${isActive ? "text-cyan-400 scale-110" : "text-gray-400 hover:text-white"}`
               }
             >
               {link.name}
             </NavLink>
           ))}
+          
+          <NavLink to="/contact" onClick={() => setIsOpen(false)} className="mt-4">
+            <button className="px-8 py-3 rounded-full border border-cyan-500/50 text-cyan-400 text-sm font-bold uppercase tracking-widest hover:bg-cyan-500 hover:text-black transition-all">
+              Let's Talk
+            </button>
+          </NavLink>
         </ul>
       </div>
-      
     </nav>
   );
 };
