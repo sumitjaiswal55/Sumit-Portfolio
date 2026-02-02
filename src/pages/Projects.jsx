@@ -23,7 +23,7 @@ const portfolioData = [
     description:
       "A real-time platform for community crime reporting using geospatial data to enhance police-citizen transparency.",
     imageUrl: crimeta,
-    btn1: "https://github.com/yourusername/crimeta", // Link add kar lena
+    btn1: "https://github.com/crimeta2025-design/project/",
     btn2: "crimeta.onrender.com",
     hoverDescription: "React, Node.js, GIS Mapping, ML",
   },
@@ -34,7 +34,7 @@ const portfolioData = [
     description:
       "B2B Supply Chain platform connecting farmers directly with hotels/restaurants using geospatial logic.",
     imageUrl: stayspot,
-    btn1: "#",
+    btn1: "https://github.com/sumitjaiswal55/StaySpot",
     btn2: "wunderlust-i9vy.onrender.com/",
     hoverDescription: "MERN Stack, Geospatial Queries, JWT",
   },
