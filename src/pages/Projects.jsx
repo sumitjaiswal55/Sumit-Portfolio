@@ -1,9 +1,9 @@
 import React from "react";
-import agribridge from "../../src/assets/agribridge.png"
-import crimeta from "../../src/assets/crimeta.png"
-import stayspot from "../../src/assets/stayspot.png"
-import meetflow from "../../src/assets/meetflow.png"
-import skinvest from "../../src/assets/skinvestment.png"
+import agribridge from "../../src/assets/agribridge.png";
+import crimeta from "../../src/assets/crimeta.png";
+import stayspot from "../../src/assets/stayspot.png";
+import meetflow from "../../src/assets/meetflow.png";
+import skinvest from "../../src/assets/skinvestment.png";
 // import investdeck from "../../src/assets/investdeck.png"
 
 const portfolioData = [
@@ -139,11 +139,18 @@ const Projects = () => {
 
                 {/* Buttons (No Purple) */}
                 <div className="flex gap-4 mt-auto">
-                  <button className="flex-1 py-2 rounded-lg border border-cyan-500/30 text-cyan-400 font-medium hover:bg-cyan-500/10 hover:border-cyan-400 transition-all text-sm">
+                  <button
+                    onClick={() =>
+                      window.open(`https://${project.btn1}`, "_blank")
+                    }
+                    className="flex-1 py-2 rounded-lg border border-cyan-500/30 text-cyan-400 font-medium hover:bg-cyan-500/10 hover:border-cyan-400 transition-all text-sm"
+                  >
                     View Code
                   </button>
                   <button
-                    onClick={() => window.open(`https://${project.btn2}`, "_blank")}
+                    onClick={() =>
+                      window.open(`https://${project.btn2}`, "_blank")
+                    }
                     className="flex-1 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium hover:shadow-[0_0_15px_rgba(6,182,212,0.5)] transition-all text-sm"
                   >
                     Live Demo
