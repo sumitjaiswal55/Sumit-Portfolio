@@ -24,6 +24,13 @@ const Certification = () => {
       date: "2023",
       imageUrl: "https://res.cloudinary.com/dtnkygknq/image/upload/w_800,c_fit/v1757827520/certificate_jg3rh3.jpg",
     },
+    {
+      id: 4,
+      title: "Code Leauge 1.0 Hackathon",
+      issuer: "GHRCEM (GHRIETN)",
+      date: "2026",
+      imageUrl: "https://res.cloudinary.com/dtnkygknq/image/upload/v1770648440/hackathon_bsooqc.jpg",
+    },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
