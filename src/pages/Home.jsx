@@ -1,8 +1,17 @@
+
+
+
+
+
+
+
+
+
+
+
 import React from "react";
 import sumitImg from "../assets/sumit.jpg";
-import { IoLocationOutline } from "react-icons/io5";
-import { IoCallOutline } from "react-icons/io5";
-import { IoBagSharp } from "react-icons/io5";
+import { IoLocationOutline, IoCallOutline, IoBagSharp, IoCodeSlash } from "react-icons/io5";
 import { TypeAnimation } from "react-type-animation";
 
 const Home = () => {
@@ -14,25 +23,40 @@ const Home = () => {
     { name: "Problem Solver" },
   ];
 
+  // Modified details to include your Research Paper as a Bento element
   const details = [
     {
       name: "Location",
       data: "Nagpur, MH, India",
       icon: <IoLocationOutline />,
+      gridSpan: "col-span-1",
+    },
+    {
+      name: "Research Author",
+      data: "AJTA Journal 2025",
+      icon: <IoCodeSlash />,
+      gridSpan: "col-span-1",
     },
     {
       name: "Expertise",
       data: "Full Stack Dev",
       icon: <IoBagSharp />,
+      gridSpan: "col-span-1",
     },
-    { name: "Contact", data: "+91 7084525212", icon: <IoCallOutline /> },
+    {
+      name: "Contact",
+      data: "+91 7084525212",
+      icon: <IoCallOutline />,
+      gridSpan: "col-span-1",
+    },
   ];
 
   return (
-    // Background updated to Deep Black with subtle Cyan/Blue radial gradient
-    <div className="flex flex-wrap text-white relative w-full min-h-screen bg-[#0c0d11] bg-[radial-gradient(circle_at_50%_50%,_rgba(6,182,212,0.1)_0%,_rgba(0,0,0,1)_100%)] overflow-hidden items-center justify-evenly gap-[2rem] px-4">
+    <div className="flex flex-wrap-reverse lg:flex-nowrap text-white relative w-full min-h-screen bg-[#0c0d11] bg-[radial-gradient(circle_at_50%_50%,_rgba(6,182,212,0.1)_0%,_rgba(0,0,0,1)_100%)] overflow-hidden items-center justify-center gap-[4rem] px-6 lg:px-20">
       
-      {/* --- IMAGE SECTION --- */}
+
+      {/* --- RIGHT SECTION: IMAGE SECTION (Kept original as requested) --- */}
+    
       <div
         className="relative h-[320px] w-[320px] flex items-center justify-center"
         style={{ animation: "float 6s ease-in-out infinite" }}
@@ -55,16 +79,16 @@ const Home = () => {
         />
       </div>
 
-      {/* --- TEXT SECTION --- */}
-      <div className="heroDescription max-w-[700px]">
-        <h1 className="text-[3rem] mb-[0.4rem] font-bold leading-tight">
+      {/* --- LEFT SECTION: TEXT & BENTO GRID --- */}
+      <div className="heroDescription max-w-[800px] z-20">
+        <h1 className="text-[3rem] lg:text-[4rem] mb-[0.4rem] font-bold leading-tight">
           Hi, I'm{" "}
           <span className="bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">
             Sumit Jaiswal
           </span>
         </h1>
 
-        <div className="text-[1.1rem] font-medium text-gray-300">
+        <div className="text-[1.2rem] font-medium text-gray-300 mb-6">
           <TypeAnimation
             sequence={[
               "Full Stack Engineer | Frontend Developer | Tech Explorer",
@@ -79,46 +103,45 @@ const Home = () => {
           />
         </div>
 
-        {/* Skills Buttons: Updated to Cyan Theme */}
+        {/* Skills Pills */}
         <div className="flex flex-wrap gap-[0.8rem] mt-[1.4rem]">
           {skills.map((link) => (
             <p
               key={link.name}
-              className="border border-cyan-500/50 py-2 px-4 rounded-full text-[0.95rem] w-fit text-cyan-100 hover:border-cyan-400 hover:bg-cyan-500/10 hover:text-white hover:shadow-[0_0_15px_rgba(34,211,238,0.5)] transition-all cursor-pointer"
+              className="border border-cyan-500/50 py-2 px-4 rounded-full text-[0.85rem] font-medium text-cyan-100 hover:border-cyan-400 hover:bg-cyan-500/10 transition-all cursor-default"
             >
               {link.name}
             </p>
           ))}
         </div>
 
-        {/* --- BOTTOM CARDS (GLASS + GLOW) --- */}
-        <div className="flex flex-wrap sm:flex-nowrap gap-[1rem] mt-[2rem] items-center justify-center">
+        {/* --- BENTO GRID STYLE CARDS --- */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
           {details.map((link, index) => (
             <div
               key={index}
-              className="group flex flex-col items-center justify-center w-full sm:w-[200px] gap-[.5rem] p-4 
-              bg-white/5 border border-white/10 rounded-[12px] backdrop-blur-md
-              transition-all duration-300 
-              hover:-translate-y-1 
-              hover:border-cyan-400 
-              hover:shadow-[0_0_25px_rgba(34,211,238,0.4)]"
+              className={`group flex items-center gap-4 p-4 
+              bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md
+              transition-all duration-300 hover:border-cyan-400/50 
+              hover:shadow-[0_0_20px_rgba(34,211,238,0.2)]`}
             >
-              <p className="flex flex-col items-center justify-center font-bold text-center">
-                <span className="text-cyan-400 text-[2rem] mb-2 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">
-                  {link.icon}
-                </span>
-                <span className="text-white group-hover:text-cyan-200 transition-colors">
+              <div className="text-cyan-400 text-[1.8rem] drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]">
+                {link.icon}
+              </div>
+              <div>
+                <p className="text-[0.7rem] uppercase tracking-widest text-gray-500 font-bold">
                   {link.name}
-                </span>
-              </p>
-              <p className="text-[14px] text-gray-400 text-center group-hover:text-white transition-colors">
-                {link.data}
-              </p>
+                </p>
+                <p className="text-[0.95rem] text-white font-medium group-hover:text-cyan-200 transition-colors">
+                  {link.data}
+                </p>
+              </div>
             </div>
           ))}
         </div>
-
       </div>
+
+
     </div>
   );
 };
