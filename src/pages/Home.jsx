@@ -1,15 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-import React from "react";
 import sumitImg from "../assets/sumit.jpg";
 import { IoLocationOutline, IoCallOutline, IoBagSharp, IoCodeSlash } from "react-icons/io5";
 import { TypeAnimation } from "react-type-animation";
